@@ -118,8 +118,8 @@ public:
 
       // Find the last crossing before the given time and calculate difference
       for (itr = getState(from, to).begin(); itr < getState(from, to).end(); ++itr) {
-         if ( ((*itr).first > t_start && (*itr).first < t_end) ||
-              ((*itr).second > t_start && (*itr).second < t_end) ) { 
+         if ( ((*itr).first >= t_start && (*itr).first < t_end) ||
+              ((*itr).second >= t_start && (*itr).second < t_end) ) { 
             return 1.0;
          }
       }
