@@ -15,10 +15,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <limits>
 
 using namespace std;
 using namespace lemon;
 using namespace netevo;
+using std::numeric_limits;
 
 /**
  * Global of the nodes in the network (each is an ant).
@@ -131,6 +133,9 @@ void doRuns (System &sys, DynamicNet &dynNet, int ant, int runs, double simLen, 
    sprintf(buf, "%sANT-%i.txt", prefix, ant+1);
    ofstream outFile;
    outFile.open(buf);
+
+   // Make sure we output the full double values
+   outFile.precision(numeric_limits<double>::digits10 + 1);
    
    // Simulate for the required number of times.
    for (i=0; i<runs; ++i) {
